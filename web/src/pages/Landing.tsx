@@ -17,7 +17,7 @@ function Landing() {
         </main>
         <div className="location">
           <strong>Curitiba</strong>
-          <span>Santa Catarina</span>
+          <span>Paraná</span>
         </div>
         <Link to="/app" className="enter-app">
             <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
