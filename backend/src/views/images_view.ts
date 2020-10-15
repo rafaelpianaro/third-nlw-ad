@@ -1,4 +1,5 @@
 import Image from '../models/Image'
+require('dotenv/config')
 
 export default {
     render(image: Image){
