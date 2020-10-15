@@ -1,8 +1,12 @@
-import express from 'express'
+import express from 'express';
+import { getRepository } from 'typeorm';
+import Orphanage from './models/Orphanage';
 
-const app = express()
+import './database/connection'
 
-app.use(express.json())
+const app = express();
+
+app.use(express.json());
 
 // Rota = conjunto
 // Recurso = usuário
@@ -20,8 +24,30 @@ app.use(express.json())
 // Route Params: DELETE http://localhost:3333/users/1 (Identificar um recurso)
 // Body: http://localhost:3333/users/ (Identificar um recurso)
 
-app.get('/users',(request, response) => {
-    return response.json({message: 'Hello World'})
+app.post('/orphanages', async(request, response) => {
+    const {
+        name,
+        latitude,
+        longitude,
+        about,
+        instructions,
+        opening_hours,
+        open_on_weekends 
+    } = request.body;
+
+    const orphanagesRepository = getRepository(Orphanage);
+
+    const orphanage = orphanagesRepository.create({
+        name,
+        latitude,
+        longitude,
+        about,
+        instructions,
+        opening_hours,
+        open_on_weekends
+    });
+    await orphanagesRepository.save(orphanage)
+    return response.status(201).json({orphanage});
 })
 
-app.listen(3333)
+app.listen(3333);
