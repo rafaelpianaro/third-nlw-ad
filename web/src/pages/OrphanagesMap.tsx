@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -9,6 +9,8 @@ import '../styles/pages/orphanages-map.css'
 import mapIcon from '../utils/mapIcon'
 
 function OrphanagesMap() {
+    useEffect(() => {}, [])
+
     return (
         <div id="page-map">
             <aside>
