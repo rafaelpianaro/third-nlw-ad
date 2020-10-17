@@ -16,6 +16,8 @@ export default function Routes() {
             <Navigator screenOptions={{ headerShown: false }}>
                 <Screen name="OrphanagesMap" component={OrphanagesMap} />
                 <Screen name="OrphanageDetails" component={OrphanagesDetails} />
+                <Screen name="SelectMapPosition" component={SelectMapPosition} />
+                <Screen name="OrphanageData" component={OrphanagesDetails} />
             </Navigator>
         </NavigationContainer>
     )
