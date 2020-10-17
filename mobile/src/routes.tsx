@@ -7,6 +7,8 @@ const { Navigator, Screen} = createStackNavigator()
 
 import OrphanagesMap from './pages/OrphanagesMap'
 import OrphanagesDetails from './pages/OrphanageDetails'
+import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosition'
+import OrphanageData from './pages/CreateOrphanage/OrphanageData'
 
 export default function Routes() {
     return (
