@@ -6,10 +6,11 @@ import { useNavigation } from '@react-navigation/native'
 
 interface HeaderProps {
     // title?: string //quando não for obrigatório
-    title: string
+    title: string,
+    showCancel?: boolean
 }
 
-export default function Header({ title }: HeaderProps) {
+export default function Header({ title, showCancel = true }: HeaderProps) {
     const navigation = useNavigation()
 
     function handleGoBackToAppHomepage() {
@@ -22,9 +23,13 @@ export default function Header({ title }: HeaderProps) {
                 <Feather name="arrow-left" size={24} color="#15b6d6" />
             </BorderlessButton>
             <Text style={styles.title}>{title}</Text>
-            <BorderlessButton onPress={handleGoBackToAppHomepage}>
-                <Feather name="x" size={24} color="#ff669d" />
-            </BorderlessButton>
+            {showCancel ? (
+                <BorderlessButton onPress={handleGoBackToAppHomepage}>
+                    <Feather name="x" size={24} color="#ff669d" />
+                </BorderlessButton>
+            ) : (
+                <View />
+            )}
         </View>
     )
 }

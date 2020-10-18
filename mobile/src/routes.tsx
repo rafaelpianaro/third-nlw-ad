@@ -16,9 +16,9 @@ export default function Routes() {
         <NavigationContainer>
             <Navigator screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#f2f3f5' } }}>
                 <Screen name="OrphanagesMap" component={OrphanagesMap} />
-                <Screen name="OrphanageDetails" component={OrphanagesDetails} options={{ headerShown: true, header: () => <Header title="Orfanato" /> }} />
-                <Screen name="SelectMapPosition" component={SelectMapPosition} />
-                <Screen name="OrphanageData" component={OrphanagesDetails} />
+                <Screen name="OrphanageDetails" component={OrphanagesDetails} options={{ headerShown: true, header: () => <Header showCancel={ false } title="Orfanato" /> }} />
+                <Screen name="SelectMapPosition" component={SelectMapPosition}  options={{ headerShown: true, header: () => <Header title="Selecione no Mapa" /> }} />
+                <Screen name="OrphanageData" component={OrphanageData}  options={{ headerShown: true, header: () => <Header title="Informe od dados" /> }}/>
             </Navigator>
         </NavigationContainer>
     )
