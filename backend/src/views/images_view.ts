@@ -6,6 +6,7 @@ export default {
         return {
             id: image.id,
             url: `${process.env.URL}/uploads/${image.path}`
+            // url: `http://192.168.0.17:3333/uploads/${image.path}`
         }
     },
 
