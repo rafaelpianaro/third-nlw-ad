@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View, StyleSheet, Switch, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import { useRoute } from '@react-navigation/native';
 
-export default function OrphanageData() {
-  const route = useRoute()
-  console.log(route.params)
+interface OrphanageDataRouteParams {
+  position: {
+    latitude: number,
+    longitude: number
+  }
+}
 
+export default function OrphanageData() {
+  // console.log(route.params)
+  const [name, setName] = useState('')
+  const [about, setAbout] = useState('')
+  const [instructions, setInstructions] = useState('')
+  const [opening_hours, setOpeningHours] = useState('')
+  const [open_on_weekends, setOpenOnWeekends] = useState(true)
+  
+  const route = useRoute()
+  const params = route.params as OrphanageDataRouteParams
+
+  function handleCreateOrphanage() {
+    const { latitude, longitude } = params.position
+    console.log({
+      name,
+      about,
+      latitude,
+      longitude,
+      instructions,
+      opening_hours,
+      open_on_weekends
+    })
+  }
+  
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 24 }}>
       <Text style={styles.title}>Dados</Text>
@@ -15,12 +42,18 @@ export default function OrphanageData() {
       <Text style={styles.label}>Nome</Text>
       <TextInput
         style={styles.input}
+        value={name}
+        onChangeText={setName}
+        // poderia passar assim, mas por ser uma chamada direta pode passar setName
+        // onChangeText={text => setName(text)}
       />
 
       <Text style={styles.label}>Sobre</Text>
       <TextInput
         style={[styles.input, { height: 110 }]}
         multiline
+        value={about}
+        onChangeText={setAbout}
       />
       {/* todo */}
       {/* <Text style={styles.label}>Whatsapp</Text>
@@ -39,11 +72,15 @@ export default function OrphanageData() {
       <TextInput
         style={[styles.input, { height: 110 }]}
         multiline
+        value={instructions}
+        onChangeText={setInstructions}
       />
 
       <Text style={styles.label}>Horario de visitas</Text>
       <TextInput
         style={styles.input}
+        value={opening_hours}
+        onChangeText={setOpeningHours}
       />
 
       <View style={styles.switchContainer}>
@@ -51,10 +88,12 @@ export default function OrphanageData() {
         <Switch 
           thumbColor="#fff" 
           trackColor={{ false: '#ccc', true: '#39CC83' }}
+          value={open_on_weekends}
+          onValueChange={setOpenOnWeekends}
         />
       </View>
 
-      <RectButton style={styles.nextButton} onPress={() => {}}>
+      <RectButton style={styles.nextButton} onPress={handleCreateOrphanage}>
         <Text style={styles.nextButtonText}>Cadastrar</Text>
       </RectButton>
     </ScrollView>
