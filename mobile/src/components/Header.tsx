@@ -15,6 +15,9 @@ export default function Header({ title }: HeaderProps) {
                 <Feather name="arrow-left" size={24} color="#15b6d6" />
             </BorderlessButton>
             <Text style={styles.title}>{title}</Text>
+            <BorderlessButton onPress={() => {}}>
+                <Feather name="x" size={24} color="#ff669d" />
+            </BorderlessButton>
         </View>
     )
 }
